@@ -135,9 +135,63 @@ func zero_values_types() {
 	fmt.Printf("%v %v %v %q\n", i, f, b, s)
 
 	typeConversion()
+
+	typeInference()
+	constants()
+	numericConstants()
 }
 
-// TODO: Continued 8th Jan 2024
+// Type express T(v) converts value v to type T
 func typeConversion() {
 
+	var i int = 42
+	var f float32 = float32(i)
+	var f64 float64 = float64(f)
+
+	fmt.Println("the float g64 value is ", f64)
+
+	// In go assignment between different items of different types requires explicit conversion
+
+}
+
+func typeInference() {
+	// When declaring a variable without type (using :=, or infering the type from value)
+	// Variable type is inferred from the value assigned to the same.
+
+	i := 1
+
+	c := 1 + 3i
+	fmt.Printf("i is of type %T \n", i)
+	fmt.Printf("c is of type %T \n", c)
+}
+
+func constants() {
+	// Constants are declared variables
+	// constants cannot be declared using :=
+	const a = 1
+
+	fmt.Println("constatns are declared variables, like a which has value ", a)
+}
+
+func numericConstants() {
+	// Numeric constants are high-precision values.
+
+	// An untyped constant takes the type needed by its context.
+
+	const (
+		big   = 1 << 100
+		small = big >> 99
+	)
+
+	fmt.Println(needFloat(big))
+	fmt.Println(needInt(small))
+	fmt.Println(needFloat(small))
+}
+
+func needInt(x int) int {
+	return x*10 + 1
+}
+
+func needFloat(x float64) float64 {
+	return x * 0.1
 }
