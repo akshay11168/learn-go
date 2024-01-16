@@ -47,7 +47,6 @@ func loops() {
 	// fmt.Println("I will run forever")
 	// }
 	fmt.Println("I will run forever if above line is commented")
-
 }
 
 func sqrt(x float64) string {
@@ -63,6 +62,7 @@ func challenges() {
 
 	fmt.Println(squareRootChallenge(225))
 }
+
 func conditions() {
 	// Go's If statement's expression need not be covered with () but {} are required
 
@@ -88,7 +88,6 @@ func pow(x, n, max float64) float64 {
 	}
 
 	return max
-
 }
 
 func squareRootChallenge(num float64) float64 {
@@ -105,7 +104,6 @@ func squareRootChallenge(num float64) float64 {
 		count++
 	}
 	return z
-
 }
 
 func switchConditions() {
