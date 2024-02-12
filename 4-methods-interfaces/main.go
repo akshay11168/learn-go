@@ -3,12 +3,15 @@ package main
 import (
 	"fmt"
 	"image"
+	"image/color"
 	"io"
 	"math"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+
+	"golang.org/x/tour/pic"
 )
 
 type I interface {
@@ -51,6 +54,8 @@ func main() {
 	rot13ReaderExcercise()
 
 	imageFunctions()
+
+	excerciseImage()
 }
 
 type vertex struct {
@@ -584,4 +589,51 @@ func imageFunctions() {
 
 	fmt.Println(m.Bounds())
 	fmt.Println(m.At(0, 0).RGBA())
+	pic.ShowImage(m)
+}
+
+// type Image struct {
+// 	// ColorModel returns the Image's color model.
+// 	ColorModel() color.Model
+// 	// Bounds returns the domain for which At can return non-zero color.
+// 	// The bounds do not necessarily contain the point (0, 0).
+// 	Bounds() Rectangle
+// 	// At returns the color of the pixel at (x, y).
+// 	// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
+// 	// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
+// 	At(x, y int) color.Color
+// }
+
+type Image struct {
+	image image.Rectangle
+}
+
+// func Pic(dx, dy int) [][]uint8 {
+// }
+
+func (i *Image) ColorModel() color.Model {
+
+	return color.RGBAModel
+}
+
+func (i *Image) Bounds() image.Rectangle {
+	return i.image.Bounds()
+}
+
+func (i *Image) At(x, y int) color.Color {
+	a, b, c, d := i.At(x, y).RGBA()
+	return color.Color(color.RGBA{uint8(a), uint8(b), uint8(c), uint8(d)})
+}
+
+func excerciseImage() {
+
+	m := Image{
+		image.Rect(0, 0, 1, 1),
+	}
+	fmt.Println("this is image excercise")
+
+	fmt.Println(m)
+	fmt.Println(m.ColorModel())
+	pic.ShowImage(m)
+
 }

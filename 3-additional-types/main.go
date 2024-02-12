@@ -341,9 +341,9 @@ func rangeFunction() {
 
 func challenge() {
 
-	// one()
+	one()
 	// two()
-	three()
+	// three()
 }
 
 func one() {
@@ -353,9 +353,6 @@ func one() {
 }
 
 func createPic(dx, dy int) [][]uint8 {
-
-	fmt.Println(dx)
-	fmt.Println(dy)
 
 	slice := make([][]uint8, dy)
 
